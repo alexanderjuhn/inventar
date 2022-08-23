@@ -1,1 +1,2 @@
 database/flyway.conf
+backend/config.yaml
