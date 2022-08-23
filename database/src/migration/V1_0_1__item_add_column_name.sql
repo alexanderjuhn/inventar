@@ -1,0 +1,1 @@
+ALTER TABLE inventar.item ADD "name" varchar;

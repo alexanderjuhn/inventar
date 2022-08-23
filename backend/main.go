@@ -1,5 +1,7 @@
 package main
-import "fmt"
+import (
+    dq "backend/databaseConnector"
+)
 func main() {
-    fmt.Println("hello world")
+    dq.UpdateInventar(dq.ReadInventar())
 }

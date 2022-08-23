@@ -1,10 +1,11 @@
-package main
+package databaseConnector
  
 import (
     "database/sql"
     "fmt"
     _ "github.com/lib/pq"
     viper "github.com/spf13/viper"
+
 )
  
 var (
@@ -13,22 +14,7 @@ var (
     user     string
     password string
     dbname   string
-    db *sql.DB
 )
- 
-func main() {
-    ReadConfig()
-    InitDatabaseConnection()
-    
-     
-    // close database
-    //defer db.Close()
- 
-    // check db
-    
- 
-    fmt.Println("Connected!")
-}
  
 func CheckError(err error) {
     if err != nil {
@@ -55,13 +41,11 @@ func ReadConfig(){
     fmt.Println("Done reading config")
 }
 
-func InitDatabaseConnection(){
-    fmt.Println(host)
-    fmt.Println(port)
-    fmt.Println(user)
-    fmt.Println(password)
-    fmt.Println(dbname)
-
+func GetDatabaseConnection() *sql.DB{
+    if (db != nil){
+        fmt.Println("db already connected")
+        return db
+    }
     // connection string
     psqlconn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
          
@@ -71,4 +55,6 @@ func InitDatabaseConnection(){
 
     err = db.Ping()
     CheckError(err)
+
+    return db
 }
