@@ -2,34 +2,37 @@ package databaseConnector
 
 import (
 	"database/sql"
-    "fmt"
-  _ "github.com/lib/pq"
-    "time"
+	"fmt"
+	"time"
+
+	_ "github.com/lib/pq"
 )
 
 var(
 	db *sql.DB
 )
 
-type item struct{
-    id int 
-	name string
-    amount int
+type Item struct{
+    Id int 
+	Name string
+    Amount int
+	Updated bool
 }
 
 // Return all items with amount
-func ReadInventar() []item{
+func ReadInventar() []Item{
 	db = GetConnection()
     rows, err := db.Query(`SELECT "id", "amount", "name" FROM inventar.item`)
     CheckError(err)
  
     defer rows.Close()
     
-    var itemList = make([]item, 0)
+    var itemList = make([]Item, 0)
     for rows.Next() {
-        var newItem item
-        err = rows.Scan(&newItem.id, &newItem.amount, &newItem.name)
+        var newItem Item
+        err = rows.Scan(&newItem.Id, &newItem.Amount, &newItem.Name)
         CheckError(err)
+		newItem.Updated = false
 
         itemList = append(itemList, newItem)
     }
@@ -39,21 +42,26 @@ func ReadInventar() []item{
 }
 
 // Update the amount of items
-func UpdateInventar(itemList []item){
-	for index, item := range itemList{
-		fmt.Println(index,item.id,item.amount, item.name)
+func UpdateInventar(itemList []Item){
+	for _, item := range itemList{
+
+		// skip items that were not updated
+		if (item.Updated==false){
+			continue
+		}
+		fmt.Println("Update Item ",item.Id)
 		db := GetConnection()
     	var e error
-		if(item.id == 0){
+		if(item.Id == 0){
 			// Item seems not to be in the database
 			// Insert it
 			stmt := `insert into inventar.item("id", "amount", "name", "last_update") values(nextval(inventar.item_seq),$1,$2,$3)`
-			_, e = db.Exec(stmt, item.amount, item.name, time.Now())
+			_, e = db.Exec(stmt, item.Amount, item.Name, time.Now())
 		} else {
 			// Item is already in the database
 			// Update it
 			stmt := `update inventar.item set amount=$1, last_update=$3 where id=$2`
-			_, e = db.Exec(stmt, item.amount+1, item.id, time.Now())
+			_, e = db.Exec(stmt, item.Amount, item.Id, time.Now())
 		}
 		CheckError(e)
 	}
@@ -64,7 +72,8 @@ func UpdateInventar(itemList []item){
 func GetConnection() *sql.DB {
 	if (db == nil){
 		ReadConfig()
-	    return GetDatabaseConnection()
+		db = GetDatabaseConnection()
+	    return db
 	} else { 
 		return db
 	}

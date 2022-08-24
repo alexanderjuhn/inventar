@@ -1,3 +1,5 @@
 database/flyway.conf
 backend/config.yaml
 backend/backend
+.vscode/settings.json
+backend/restapi/restapi

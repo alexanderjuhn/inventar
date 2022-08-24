@@ -43,7 +43,6 @@ func ReadConfig(){
 
 func GetDatabaseConnection() *sql.DB{
     if (db != nil){
-        fmt.Println("db already connected")
         return db
     }
     // connection string
