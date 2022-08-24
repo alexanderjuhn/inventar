@@ -22,7 +22,7 @@ type Item struct{
 // Return all items with amount
 func ReadInventar() []Item{
 	db = GetConnection()
-    rows, err := db.Query(`SELECT "id", "amount", "name" FROM inventar.item`)
+    rows, err := db.Query(`SELECT "id", "amount", "name" FROM inventar.item order by name`)
     CheckError(err)
  
     defer rows.Close()
@@ -55,7 +55,7 @@ func UpdateInventar(itemList []Item){
 		if(item.Id == 0){
 			// Item seems not to be in the database
 			// Insert it
-			stmt := `insert into inventar.item("id", "amount", "name", "last_update") values(nextval(inventar.item_seq),$1,$2,$3)`
+			stmt := "insert into inventar.item(id, amount, name, last_update) values(nextval('inventar.item_seq'),$1,$2,$3)"
 			_, e = db.Exec(stmt, item.Amount, item.Name, time.Now())
 		} else {
 			// Item is already in the database
