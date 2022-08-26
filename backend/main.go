@@ -1,7 +1,7 @@
 package main
 import (
-    dq "backend/databaseConnector"
+    restapi "backend/restapi"
 )
 func main() {
-    dq.UpdateInventar(dq.ReadInventar())
+    restapi.StartServer()
 }
