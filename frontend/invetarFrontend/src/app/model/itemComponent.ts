@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
     selector: 'app-hello-world',
-    templateUrl: './itemList.component.html',
-    styleUrls: ['./itemList.component.css']
+    templateUrl: '../itemList/itemList.component.html',
+    styleUrls: ['../itemList/itemList.component.css']
 })
 
 export class ItemComponent implements OnInit {

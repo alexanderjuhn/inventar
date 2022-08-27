@@ -1,6 +1,5 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable, Input } from '@angular/core';
-import { MessageModel } from '../model/message';
 import { Observable } from 'rxjs';
 
 @Injectable({
