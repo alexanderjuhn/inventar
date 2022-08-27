@@ -1,12 +1,15 @@
 <table style="width:100%;border: 3px solid black;border-collapse: collapse;border-radius: 10px;">
-  <th>ID</th>
   <th>Name</th>
   <th>Menge</th>
   <th>Daten erfasst am</th>
+  <th></th>
 <tr *ngFor="let item of itemComponentList; let i=index">
-      <td>{{item.id}}</td>
       <td>{{item.name}}</td>
       <td>{{item.amount}}</td>
       <td>{{item.datecreated}}</td>
+      <td><button (click)="item.increase()">+</button><button (click)="item.decrease()">-</button></td>
   </tr>
 </table>
+<br>
+<button style="width: 100%"(click)="newItem()">Neues Item</button><br><br>
+<button (click)="reload()">Neu Laden</button><button (click)="update()">Speichern</button>

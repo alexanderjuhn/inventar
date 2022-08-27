@@ -17,4 +17,23 @@ export class ItemComponent implements OnInit {
 
     ngOnInit(): void {
     }
+
+    increase() {
+        this.amount++
+        this.updated=true
+    }
+
+    decrease() {
+        this.amount--
+        this.updated=true
+    }
+
+    update() {
+    }
+
+    reload() {
+    }
+
+    newItem(){
+    }
 }

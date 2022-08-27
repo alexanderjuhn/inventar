@@ -16,4 +16,8 @@ export class InventarService {
         console.log('Request sent')
         return this.http.get(this.URL);
     }
+
+    updateInventar(){
+        console.log('Update inventar')
+    }
 }

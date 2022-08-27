@@ -19,6 +19,20 @@ export class ItemList implements OnInit {
     private router: Router, private inventarService: InventarService) { }
 
 
+
+  update(){
+    console.log("Update Trigger")
+  }
+
+  reload(){
+    console.log("Reload Trigger");
+    window.location.reload();
+  }
+
+  newItem(){
+    console.log('New Item')
+  }
+
   ngOnInit() {
     this.inventarService.readInventar().subscribe((res) => {
       console.log(res.length);
