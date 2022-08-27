@@ -6,13 +6,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HelloWorldService } from './service/hello-world.service';
 import { MenuComponent } from './menu/menu.component';
-import { HelloWorldComponent } from './hello-world/hello-world.component';
+import { ItemList } from './itemList/itemList.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    HelloWorldComponent,
+    ItemList,
   ],
   imports: [
     BrowserModule,

@@ -1,17 +1,20 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Input } from '@angular/core';
 import { MessageModel } from '../model/message';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
 })
 export class HelloWorldService {
+
+    private readonly URL = 'http://localhost:8080/readInventar'
+    
     constructor(private http: HttpClient) {
     }
-    executeHelloWorldService() {
-        var test = this.http.get<MessageModel>('http://localhost:8080/readInventar');
-        console.log(test.forEach.toString);
-        
-        return this.http.get<MessageModel>('http://localhost:8080/readInventar');
+
+    readInventar() : Observable<any> {
+        console.log('Request sent')
+        return this.http.get(this.URL);
     }
 }

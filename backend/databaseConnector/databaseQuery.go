@@ -17,12 +17,17 @@ type Item struct{
 	Name string
     Amount int
 	Updated bool
+	Last_Update string
 }
+
+const(
+	layoutTime = "02.01.2006"
+)
 
 // Return all items with amount
 func ReadInventar() []Item{
 	db = GetConnection()
-    rows, err := db.Query(`SELECT "id", "amount", "name" FROM inventar.item order by name`)
+    rows, err := db.Query(`SELECT "id", "amount", "name", "last_update" FROM inventar.item order by name`)
     CheckError(err)
  
     defer rows.Close()
@@ -30,10 +35,12 @@ func ReadInventar() []Item{
     var itemList = make([]Item, 0)
     for rows.Next() {
         var newItem Item
-        err = rows.Scan(&newItem.Id, &newItem.Amount, &newItem.Name)
+        var timestamp time.Time
+		err = rows.Scan(&newItem.Id, &newItem.Amount, &newItem.Name, &timestamp)
+
         CheckError(err)
 		newItem.Updated = false
-
+		newItem.Last_Update= timestamp.Format(layoutTime)
         itemList = append(itemList, newItem)
     }
  

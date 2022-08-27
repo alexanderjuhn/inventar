@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HelloWorldComponent } from './hello-world.component';
+import { ItemList } from './itemList.component';
 
-describe('HelloWorldComponent', () => {
-  let component: HelloWorldComponent;
-  let fixture: ComponentFixture<HelloWorldComponent>;
+describe('ItemList', () => {
+  let component: ItemList;
+  let fixture: ComponentFixture<ItemList>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HelloWorldComponent ]
+      declarations: [ ItemList ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HelloWorldComponent);
+    fixture = TestBed.createComponent(ItemList);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
