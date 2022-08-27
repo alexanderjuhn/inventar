@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
     providedIn: 'root'
 })
-export class HelloWorldService {
+export class InventarService {
 
     private readonly URL = 'http://localhost:8080/readInventar'
     

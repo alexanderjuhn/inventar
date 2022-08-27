@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { HelloWorldService } from '../service/hello-world.service';
+import { InventarService } from '../service/inventar.service';
 import { ItemComponent } from './itemComponent';
 
 @Component({
@@ -16,11 +16,11 @@ export class ItemList implements OnInit {
   itemComponentList: Array<ItemComponent> = [];
 
   constructor(private route: ActivatedRoute,
-    private router: Router, private helloWorldService: HelloWorldService) { }
+    private router: Router, private inventarService: InventarService) { }
 
 
   ngOnInit() {
-    this.helloWorldService.readInventar().subscribe((res) => {
+    this.inventarService.readInventar().subscribe((res) => {
       console.log(res.length);
       for (var i = 0; i < res.length; i++) {
         var itemComponent = new ItemComponent();

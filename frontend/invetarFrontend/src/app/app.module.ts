@@ -4,7 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HelloWorldService } from './service/hello-world.service';
+import { InventarService } from './service/inventar.service';
 import { MenuComponent } from './menu/menu.component';
 import { ItemList } from './itemList/itemList.component';
 
@@ -20,7 +20,7 @@ import { ItemList } from './itemList/itemList.component';
     HttpClientModule,
   ],
   providers: [
-    HelloWorldService,
+    InventarService,
   ],
   bootstrap: [AppComponent]
 })
