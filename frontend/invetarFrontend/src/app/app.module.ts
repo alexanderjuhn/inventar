@@ -5,13 +5,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InventarService } from './service/inventar.service';
-import { MenuComponent } from './menu/menu.component';
 import { ItemList } from './itemList/itemList.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent,
     ItemList,
   ],
   imports: [
