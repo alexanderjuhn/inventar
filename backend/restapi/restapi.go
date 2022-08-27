@@ -1,4 +1,4 @@
-package main
+package restapi
 
 import (
 	"fmt"
@@ -7,10 +7,18 @@ import (
 	dc "backend/databaseConnector"
 
 	"github.com/gin-gonic/gin"
+    "github.com/gin-contrib/cors"
 )
 
-func main() {
+func StartServer() {
     router := gin.Default()
+
+    router.Use(cors.New(cors.Config{
+        AllowOrigins: []string{"*"},
+        AllowMethods: []string{"POST", "PUT", "PATCH", "DELETE"},
+        AllowHeaders: []string{"*"},
+    }))
+
     router.GET("/readInventar", getInventar)
     router.POST("/updateInventar", updateInventar)
     router.Run("localhost:8080")
