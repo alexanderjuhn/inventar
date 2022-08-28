@@ -12,8 +12,6 @@ export class InventarService {
     private readonly READ_INVENTAR = 'readInventar'
     private readonly LIVENESS_PROBE = 'livenessProbe'
 
-    public connected = false
-
     constructor(private http: HttpClient) {
     }
 
@@ -28,9 +26,4 @@ export class InventarService {
     livenessProbe(): Observable<any> {
         return this.http.get(this.URL + this.LIVENESS_PROBE, { observe: 'response' })
     }
-
-    onError() {
-        this.connected = false
-    }
-
 }
