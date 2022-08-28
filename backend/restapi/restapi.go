@@ -19,9 +19,11 @@ func StartServer() {
         AllowHeaders: []string{"*"},
     }))
 
+
     router.GET("/readInventar", getInventar)
     router.POST("/updateInventar", updateInventar)
-    router.Run("localhost:8080")
+    router.GET("/livenessProbe", livenessProbe)
+    router.Run(":8080")
 }
 
 func getInventar(c *gin.Context) {
@@ -38,4 +40,8 @@ func updateInventar(c *gin.Context) {
     }
 
     dc.UpdateInventar(updatedItem)
+}
+
+func livenessProbe(c *gin.Context){
+    c.IndentedJSON(200,"Ok")
 }

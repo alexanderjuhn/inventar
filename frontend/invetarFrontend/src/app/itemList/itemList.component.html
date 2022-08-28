@@ -7,9 +7,9 @@
       <td>{{item.name}}</td>
       <td>{{item.amount}}</td>
       <td>{{item.datecreated}}</td>
-      <td><button (click)="item.increase()">+</button><button (click)="item.decrease()">-</button></td>
+      <td style="width:40%"><button (click)="item.increase()">+</button><button (click)="item.decrease()">-</button></td>
   </tr>
 </table>
 <br>
 <button style="width: 100%"(click)="newItem()">Neues Item</button><br><br>
-<button (click)="reload()">Neu Laden</button><button (click)="update()">Speichern</button>
+<button [disabled]="!this.connected" (click)="reload()">Neu Laden</button><button [disabled]="!this.connected" (click)="update()">Speichern</button>

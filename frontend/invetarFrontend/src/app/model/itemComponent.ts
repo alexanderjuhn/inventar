@@ -13,6 +13,8 @@ export class ItemComponent implements OnInit {
     datecreated: number = 0;
     updated: boolean = false;
 
+    connected!: boolean 
+
     constructor() { }
 
     ngOnInit(): void {
@@ -35,5 +37,8 @@ export class ItemComponent implements OnInit {
     }
 
     newItem(){
+    }
+
+    livenessProbe(){
     }
 }

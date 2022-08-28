@@ -1,23 +1,36 @@
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable, Input } from '@angular/core';
 import { Observable } from 'rxjs';
+import { first } from "rxjs/operators";
 
 @Injectable({
     providedIn: 'root'
 })
 export class InventarService {
 
-    private readonly URL = 'http://localhost:8080/readInventar'
-    
+    private readonly URL = 'http://192.168.2.208:8080/'
+    private readonly READ_INVENTAR = 'readInventar'
+    private readonly LIVENESS_PROBE = 'livenessProbe'
+
+    public connected = false
+
     constructor(private http: HttpClient) {
     }
 
-    readInventar() : Observable<any> {
-        console.log('Request sent')
-        return this.http.get(this.URL);
+    readInventar(): Observable<any> {
+        return this.http.get(this.URL + this.READ_INVENTAR);
     }
 
-    updateInventar(){
+    updateInventar() {
         console.log('Update inventar')
     }
+
+    livenessProbe(): Observable<any> {
+        return this.http.get(this.URL + this.LIVENESS_PROBE, { observe: 'response' })
+    }
+
+    onError() {
+        this.connected = false
+    }
+
 }
