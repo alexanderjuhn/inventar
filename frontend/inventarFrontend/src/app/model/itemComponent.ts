@@ -27,6 +27,9 @@ export class ItemComponent implements OnInit {
 
     decrease() {
         this.amount--
+        if(this.amount<0){
+            this.amount=0
+        }
         this.updated=true
     }
 

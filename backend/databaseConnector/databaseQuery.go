@@ -56,7 +56,7 @@ func UpdateInventar(itemList []Item){
 		if (item.Updated==false){
 			continue
 		}
-		fmt.Println("Update Item ",item.Id)
+		fmt.Println("Update Item ",item.Id," : ", item.Name)
 		db := GetConnection()
     	var e error
 		if(item.Id == 0){

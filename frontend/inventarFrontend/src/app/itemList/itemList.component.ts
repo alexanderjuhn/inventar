@@ -27,6 +27,8 @@ export class ItemList implements OnInit {
 
   update() {
     console.log("Update Trigger")
+    this.inventarService.updateInventar(this.itemComponentList)
+    window.location.reload()
   }
 
   reload() {
