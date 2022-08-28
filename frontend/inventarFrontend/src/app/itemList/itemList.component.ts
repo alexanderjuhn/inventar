@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { InventarService } from '../service/inventar.service';
-import { ItemComponent } from './../model/itemComponent';
+import { ItemComponent } from '../model/itemComponent';
 import { first, interval, Subscription } from 'rxjs';
 
 @Component({
