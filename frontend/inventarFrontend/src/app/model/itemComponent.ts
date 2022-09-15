@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
     selector: 'app-hello-world',
@@ -7,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class ItemComponent implements OnInit {
-    id: string = "";
+    id: number = 0;
     name: string = "";
     amount: number = 0;
     datecreated: number = 0;
@@ -44,4 +46,8 @@ export class ItemComponent implements OnInit {
 
     livenessProbe(){
     }
+
+    closeNewItem(){}
+
+    checkForUnsavedItems(){}
 }

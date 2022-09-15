@@ -1,15 +1,25 @@
-<table style="width:100%;border: 3px solid black;border-collapse: collapse;border-radius: 10px;">
-  <th>Name</th>
-  <th>Menge</th>
-  <th>Daten erfasst am</th>
-  <th></th>
-<tr *ngFor="let item of itemComponentList; let i=index">
+<div *ngIf="!getShowNewItem()">
+  {{ this.checkForUnsavedItems() }}
+  <table style="width:100%;border: 3px solid black;border-collapse: collapse;border-radius: 10px;">
+    <th>Name</th>
+    <th>Menge</th>
+    <th>Daten erfasst am</th>
+    <th></th>
+    <tr *ngFor="let item of itemComponentList; let i=index">
       <td>{{item.name}}</td>
       <td>{{item.amount}}</td>
       <td>{{item.datecreated}}</td>
-      <td style="width:40%"><button (click)="item.increase()">+</button><button (click)="item.decrease()">-</button></td>
-  </tr>
-</table>
-<br>
-<button style="width: 100%"(click)="newItem()">Neues Item</button><br><br>
-<button [disabled]="!this.connected" (click)="reload()">Neu Laden</button><button [disabled]="!this.connected" (click)="update()">Speichern</button>
+      <td style="width:40%"><button (click)="item.increase()">+</button><button (click)="item.decrease()">-</button>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <button style="width: 100%" (click)="newItem()">Neues Item</button><br><br>
+  <button [disabled]="!this.connected" (click)="reload()">Neu Laden</button><button [disabled]="!this.connected"
+    (click)="update()">Speichern</button>
+</div>
+<div >
+  
+</div>
+
+<div  class="app-add-new-item" *ngIf="getShowNewItem()" (reload)="reload()"></div>

@@ -1,0 +1,20 @@
+<p>click-me works!</p>
+123123
+
+<form [formGroup]="checkoutForm">
+    <div>
+        <label for="name">
+          Name
+        </label>
+        <input id="name" type="text" formControlName="name">
+      </div>
+    
+      <div>
+        <label for="address">
+          Address
+        </label>
+        <input id="address" type="text" formControlName="address">
+      </div>
+    <button class="button" (click)="save()" type="submit">Purchase</button>
+  
+</form>

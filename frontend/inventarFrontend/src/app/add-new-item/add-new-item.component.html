@@ -1,0 +1,25 @@
+<form [formGroup]="itemForm" style="width:100%">
+    <table class="newItemTable">
+        <th>Name</th>
+        <th>Menge</th>
+        <th></th>
+        <tr>
+            <td>
+                <input id="name" style="width:100%" type="text" formControlName="name" value="{{itemComponent.name}}">
+            </td>
+            <td>
+                {{itemComponent.amount}}
+            </td>
+            <td style="width:40%">
+                <button style="width: 50%" (click)="itemComponent.increase()">+</button>
+                <button style="width: 50%" (click)="itemComponent.decrease()">-</button>
+            </td>
+        </tr>
+    </table>
+</form>
+
+
+
+<p>
+    <button style="width:50%;height:50px" (click)="saveNewItem(itemComponent)">Speichern</button>
+    <button style="width:50%;height:50px" (click)="abort()">Abbrechen</button>

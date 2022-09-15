@@ -12,6 +12,8 @@ export class InventarService {
     private readonly READ_INVENTAR = 'readInventar'
     private readonly LIVENESS_PROBE = 'livenessProbe'
     private readonly UPDATE_INVENTAR = 'updateInventar'
+    private showNewItem = false
+    private newItem = new ItemComponent()
 
     constructor(private http: HttpClient) {
     }
@@ -28,5 +30,21 @@ export class InventarService {
 
     livenessProbe(): Observable<any> {
         return this.http.get(this.URL + this.LIVENESS_PROBE, { observe: 'response' })
+    }
+
+    updateShowNewItem(status: boolean){
+        this.showNewItem=status
+    }
+
+    getShowNewItem(): boolean{
+        return this.showNewItem
+    }
+
+    getNewItem(): ItemComponent{
+        return this.newItem
+    }
+
+    setNewItem(newItem: ItemComponent){
+        this.newItem = newItem
     }
 }
