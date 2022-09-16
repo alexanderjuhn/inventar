@@ -1,0 +1,4 @@
+FROM golang
+# FROM alpine:3.16.2
+COPY ./backend /etc/appname/backend
+ENTRYPOINT ["/etc/appname/backend"]
