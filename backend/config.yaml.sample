@@ -1,6 +1,0 @@
-database:
-  hostname: localhost
-  port: 5432
-  dbname: inventar_db
-  user: username
-  password: password
