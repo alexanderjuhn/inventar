@@ -2,13 +2,14 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable, Input } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ItemComponent } from '../model/itemComponent';
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root'
 })
 export class InventarService {
 
-    private readonly URL = 'http://192.168.2.208:8080/'
+    private readonly URL = environment.url
     private readonly READ_INVENTAR = 'readInventar'
     private readonly LIVENESS_PROBE = 'livenessProbe'
     private readonly UPDATE_INVENTAR = 'updateInventar'

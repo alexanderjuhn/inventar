@@ -12,7 +12,6 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field'
 import { AddNewItemComponent } from './add-new-item/add-new-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ClickMeComponent } from './click-me/click-me.component';
 
 const MaterialComponents = [
   MatInputModule,
@@ -24,7 +23,6 @@ const MaterialComponents = [
     AppComponent,
     ItemList,
     AddNewItemComponent,
-    ClickMeComponent,
   ],
   imports: [
     BrowserModule,
