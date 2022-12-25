@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  url: 'http://192.168.2.208:8081/'
+  url: 'http://local-build:80/inventar_backend'
 };
