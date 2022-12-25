@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "invetarFrontend": {
+    "inventarFrontend": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/invetar-frontend",
+            "outputPath": "dist/inventar-frontend",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -73,13 +73,13 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "invetarFrontend:build:production"
+              "browserTarget": "inventarFrontend:build:production"
             },
             "development": {
-              "browserTarget": "invetarFrontend:build:development"
+              "browserTarget": "inventarFrontend:build:development"
             },
             "test": {
-              "browserTarget": "invetarFrontend:build:test"
+              "browserTarget": "inventarFrontend:build:test"
             }
           },
           "defaultConfiguration": "development"
@@ -87,7 +87,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "invetarFrontend:build"
+            "browserTarget": "inventarFrontend:build"
           }
         },
         "test": {
