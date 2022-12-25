@@ -11,6 +11,7 @@ import (
 )
 
 func StartServer() {
+    dc.ReadConfig()
     router := gin.Default()
 
     router.Use(cors.New(cors.Config{
