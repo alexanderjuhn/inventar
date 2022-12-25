@@ -33,6 +33,7 @@ func ReadConfig(){
     if err != nil { // Handle errors reading the config file
 	    panic(fmt.Errorf("fatal error config file: %w", err))
     }
+    fmt.Println("Reading config at "+viper.GetViper().ConfigFileUsed())
     host = viper.GetString("database.hostname")
     port = viper.GetInt("database.port")
     user = viper.GetString("database.user")
