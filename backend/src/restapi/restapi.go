@@ -14,11 +14,11 @@ func StartServer() {
     dc.ReadConfig()
     router := gin.Default()
 
-    router.Use(cors.New(cors.Config{
-        AllowOrigins: []string{"*"},
-        AllowMethods: []string{"POST", "PUT", "PATCH", "DELETE"},
-        AllowHeaders: []string{"*"},
-    }))
+    // same as
+    // config := cors.DefaultConfig()
+    // config.AllowAllOrigins = true
+    // router.Use(cors.New(config))
+    router.Use(cors.Default())
 
 
     router.GET("/inventar_backend/readInventar", getInventar)
