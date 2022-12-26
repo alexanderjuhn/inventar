@@ -49,7 +49,7 @@ func GetDatabaseConnection() *sql.DB{
     }
     // connection string
     psqlconn := fmt.Sprintf("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname)
-         
+    log.Println("host=%s port=%d user=%s password=%s dbname=%s sslmode=disable", host, port, user, password, dbname) 
     // open database
     db, err := sql.Open("postgres", psqlconn)
     CheckError(err)
