@@ -21,9 +21,9 @@ func StartServer() {
     }))
 
 
-    router.GET("/readInventar", getInventar)
-    router.POST("/updateInventar", updateInventar)
-    router.GET("/livenessProbe", livenessProbe)
+    router.GET("/inventar_backend/readInventar", getInventar)
+    router.POST("/inventar_backend/updateInventar", updateInventar)
+    router.GET("/inventar_backend/livenessProbe", livenessProbe)
     router.Run(":8080")
 }
 
