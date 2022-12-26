@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-    "strconv"
 	_ "github.com/lib/pq"
 	viper "github.com/spf13/viper"
 )
