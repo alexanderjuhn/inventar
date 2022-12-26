@@ -1,11 +1,12 @@
 package databaseConnector
- 
-import (
-    "database/sql"
-    "fmt"
-    _ "github.com/lib/pq"
-    viper "github.com/spf13/viper"
 
+import (
+	"database/sql"
+	"fmt"
+	"log"
+
+	_ "github.com/lib/pq"
+	viper "github.com/spf13/viper"
 )
  
 var (
@@ -33,13 +34,13 @@ func ReadConfig(){
     if err != nil { // Handle errors reading the config file
 	    panic(fmt.Errorf("fatal error config file: %w", err))
     }
-    fmt.Println("Reading config at "+viper.GetViper().ConfigFileUsed())
+    log.Println("Reading config at "+viper.GetViper().ConfigFileUsed())
     host = viper.GetString("database.hostname")
     port = viper.GetInt("database.port")
     user = viper.GetString("database.user")
     password = viper.GetString("database.password")
     dbname = viper.GetString("database.dbname")
-    fmt.Println("Done reading config")
+    log.Println("Done reading config")
 }
 
 func GetDatabaseConnection() *sql.DB{
@@ -51,9 +52,6 @@ func GetDatabaseConnection() *sql.DB{
          
     // open database
     db, err := sql.Open("postgres", psqlconn)
-    CheckError(err)
-
-    err = db.Ping()
     CheckError(err)
 
     return db
