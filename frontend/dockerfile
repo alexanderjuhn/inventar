@@ -1,2 +1,2 @@
 FROM arm32v7/tomcat:9.0
-COPY inventarFrontend/dist/inventar-frontend /usr/local/tomcat/webapps/inventarFrontend
+COPY inventarFrontend/dist/inventar-frontend /usr/local/tomcat/webapps/inventar
