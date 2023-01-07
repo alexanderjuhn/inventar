@@ -2,14 +2,18 @@
   {{ this.checkForUnsavedItems() }}
   <table style="width:100%;border: 3px solid black;border-collapse: collapse;border-radius: 10px;">
     <th>Name</th>
-    <th>Menge</th>
-    <th>Daten erfasst am</th>
-    <th></th>
+    <th style="width:10%">Menge</th>
+    <th style="width:15%">Daten erfasst am</th>
+    <th style="width:30%"></th>
+    <th style="width:10%">Verlauf</th>
     <tr *ngFor="let item of itemComponentList; let i=index">
       <td>{{item.name}}</td>
-      <td>{{item.amount}}</td>
-      <td>{{item.datecreated}}</td>
-      <td style="width:40%"><button (click)="item.increase()">+</button><button (click)="item.decrease()">-</button>
+      <td style="width:10%">{{item.amount}}</td>
+      <td style="width:15%">{{item.datecreated}}</td>
+      <td style="width:30%"><button (click)="item.increase()">+</button><button (click)="item.decrease()">-</button>
+      </td>
+      <td style="width:10%">
+        <button style="width:100%" (click)="getHistory(item.id)"><img src="./assets/img/history.png"/></button>
       </td>
     </tr>
   </table>

@@ -98,4 +98,16 @@ export class ItemList implements OnInit {
     });
     }
   }
+
+  getHistory(item_id:number){
+    console.log('Get history ItemList ' + item_id)
+    this.inventarService.getItemHistory(item_id.toString()).subscribe((res) =>{
+      for (var i = 0; i < res.length; i++) {
+        console.log(res[i].Id)
+      }
+    }
+    
+    )
+
+  }
 }

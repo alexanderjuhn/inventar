@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { InventarService } from '../service/inventar.service';
 import { FormBuilder } from '@angular/forms';
 import { FormGroup, FormControl, ReactiveFormsModule } from '@angular/forms';
 
@@ -33,6 +34,9 @@ export class ItemComponent implements OnInit {
             this.amount=0
         }
         this.updated=true
+    }
+
+    getHistory(item_id:number){
     }
 
     update() {

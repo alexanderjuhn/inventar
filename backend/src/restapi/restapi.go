@@ -1,10 +1,11 @@
 package restapi
 
 import (
-	"fmt"
-	"net/http"
-    "strings"
 	dc "backend/databaseConnector"
+	"fmt"
+	"log"
+	"net/http"
+	"strings"
 
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
@@ -15,10 +16,11 @@ func StartServer() {
     router := gin.Default()
 
     // same as
-    // config := cors.DefaultConfig()
-    // config.AllowAllOrigins = true
-    // router.Use(cors.New(config))
-    router.Use(cors.Default())
+    config := cors.DefaultConfig()
+    config.AllowAllOrigins = true
+    config.AllowHeaders = []string{"Origin"}
+    router.Use(cors.New(config))
+    //router.Use(cors.Default())
 
 
     router.GET("/inventar_backend/readInventar", getInventar)
@@ -46,6 +48,8 @@ func updateInventar(c *gin.Context) {
 
 func getItemHistory(c *gin.Context) {
     itemId := c.Request.Header["Item-Id"]
+    log.Println("item id")
+    log.Println(itemId)
     itemHistory := dc.GetItemHistory(strings.Join(itemId,""))
 
     c.IndentedJSON(http.StatusOK, itemHistory)
