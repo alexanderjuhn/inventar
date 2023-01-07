@@ -3,11 +3,11 @@ package restapi
 import (
 	"fmt"
 	"net/http"
-
+    "strings"
 	dc "backend/databaseConnector"
 
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
-    "github.com/gin-contrib/cors"
 )
 
 func StartServer() {
@@ -24,6 +24,7 @@ func StartServer() {
     router.GET("/inventar_backend/readInventar", getInventar)
     router.POST("/inventar_backend/updateInventar", updateInventar)
     router.GET("/inventar_backend/livenessProbe", livenessProbe)
+    router.GET("/inventar_backend/getItemHistory", getItemHistory)
     router.Run(":8080")
 }
 
@@ -41,6 +42,13 @@ func updateInventar(c *gin.Context) {
     }
 
     dc.UpdateInventar(updatedItem)
+}
+
+func getItemHistory(c *gin.Context) {
+    itemId := c.Request.Header["Item-Id"]
+    itemHistory := dc.GetItemHistory(strings.Join(itemId,""))
+
+    c.IndentedJSON(http.StatusOK, itemHistory)
 }
 
 func livenessProbe(c *gin.Context){
