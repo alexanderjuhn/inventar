@@ -3,3 +3,5 @@ backend/config.yaml
 backend/backend
 .vscode/settings.json
 backend/restapi/restapi
+backend/bin/*
+backend/pkg/*
