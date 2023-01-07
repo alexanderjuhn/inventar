@@ -4,6 +4,7 @@ import { InventarService } from '../service/inventar.service';
 import { ItemComponent } from '../model/itemComponent';
 import { interval, Subscription } from 'rxjs';
 import { FormBuilder,FormGroup, FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import { ItemHistoryEntry } from '../model/ItemHistoryEntry';
 
 @Component({
   selector: 'app-hello-world',
@@ -20,6 +21,7 @@ export class ItemList implements OnInit {
   showNewItem: boolean = false
 
   itemComponentList: Array<ItemComponent> = [];
+  itemHistoryList: Array<ItemHistoryEntry> = [];
   subscription!: Subscription;
 
   constructor(private route: ActivatedRoute,
@@ -103,7 +105,12 @@ export class ItemList implements OnInit {
     console.log('Get history ItemList ' + item_id)
     this.inventarService.getItemHistory(item_id.toString()).subscribe((res) =>{
       for (var i = 0; i < res.length; i++) {
-        console.log(res[i].Id)
+        var itemHistoryEntry  = new ItemHistoryEntry();
+        itemHistoryEntry.id = res[i].Id
+        itemHistoryEntry.item_id = res[i].Item_Id
+        itemHistoryEntry.amount_change = res[i].AmountChange
+        itemHistoryEntry.date_change = res[i].Date_Change
+        this.itemHistoryList.push(itemHistoryEntry)
       }
     }
     
