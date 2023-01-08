@@ -30,8 +30,7 @@ export class InventarService {
     }
 
     getItemHistory(item_id: string): Observable<any> {
-        const headers = new HttpHeaders().append('Item-Id', item_id);
-        return this.http.get(this.URL + this.GET_ITEM_HISTORY, { headers });
+        return this.http.get(this.URL + this.GET_ITEM_HISTORY + "?itemId=" + item_id);
     }
 
     updateInventar(itemComponentList: Array<ItemComponent>){

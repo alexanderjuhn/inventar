@@ -46,7 +46,8 @@ func updateInventar(c *gin.Context) {
 }
 
 func getItemHistory(c *gin.Context) {
-    itemId := c.Request.Header["Item-Id"]
+    itemId:= c.Request.URL.Query()["itemId"]
+    //itemId := c.Request.Header["Item-Id"]
     itemHistory := dc.GetItemHistory(strings.Join(itemId,""))
 
     c.IndentedJSON(http.StatusOK, itemHistory)
