@@ -1,0 +1,16 @@
+<div style="text-align: center">{{ getItemName() }}</div><p>
+<form [formGroup]="itemForm" style="width:100%;border: 1px solid black;border-collapse: collapse;border-radius: 1px;">
+    <table class="newItemTable">
+        <th style="width:50%">Datum</th>
+        <th style="width:50%">Menge</th>
+        <tr *ngFor="let itemHistoryEntry of getHistory(); let i=index">
+          <td style="width:50%">{{itemHistoryEntry.date_change}}</td>
+          <td style="width:50%">{{itemHistoryEntry.amount_change}}</td>
+        </tr>
+    </table>
+</form>
+
+
+
+<p>
+    <button style="width:100%;height:50px" (click)="close()">Zurück</button>

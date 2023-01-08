@@ -13,6 +13,7 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field'
 import { AddNewItemComponent } from './add-new-item/add-new-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { GetItemHistoryComponent } from './get-item-history/get-item-history.component';
 
 const MaterialComponents = [
   MatInputModule,
@@ -24,6 +25,7 @@ const MaterialComponents = [
     AppComponent,
     ItemList,
     AddNewItemComponent,
+    GetItemHistoryComponent,
   ],
   imports: [
     BrowserModule,

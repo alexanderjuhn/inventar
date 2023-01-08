@@ -46,6 +46,12 @@ export class ItemList implements OnInit {
   newItem() {
     console.log('New Item')
     this.inventarService.updateShowNewItem(true)
+    this.inventarService.updateShowHome(false)
+  }
+
+  itemHistory(){
+    console.log('Show item history')
+    this.inventarService.updateShowItemHistory(true)
   }
 
   ngOnInit() {
@@ -89,6 +95,14 @@ export class ItemList implements OnInit {
     return this.inventarService.getShowNewItem();
   }
 
+  getShowItemHistory(): boolean{
+    return this.inventarService.getShowItemHistory();
+  }
+
+  getShowHome(): boolean{
+    return this.inventarService.getShowHome();
+  }
+
   checkForUnsavedItems(){
     if(this.inventarService.getNewItem().name!=''){
       this.itemComponentList.push(this.inventarService.getNewItem())
@@ -101,9 +115,10 @@ export class ItemList implements OnInit {
     }
   }
 
-  getHistory(item_id:number){
-    console.log('Get history ItemList ' + item_id)
-    this.inventarService.getItemHistory(item_id.toString()).subscribe((res) =>{
+  getHistory(item:ItemComponent){
+    console.log('Get history ItemList ' + item.id)
+    this.itemHistoryList=[]
+    this.inventarService.getItemHistory(item.id.toString()).subscribe((res) =>{
       for (var i = 0; i < res.length; i++) {
         var itemHistoryEntry  = new ItemHistoryEntry();
         itemHistoryEntry.id = res[i].Id
@@ -116,5 +131,9 @@ export class ItemList implements OnInit {
     
     )
 
+    this.inventarService.setItemHistoryList(this.itemHistoryList, item.name)
+    
+    this.inventarService.updateShowHome(false)
+    this.inventarService.updateShowItemHistory(true)
   }
 }

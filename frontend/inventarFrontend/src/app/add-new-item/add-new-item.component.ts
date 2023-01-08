@@ -25,6 +25,7 @@ export class AddNewItemComponent implements OnInit {
   }
 
   abort(){
+    this.inventarService.updateShowHome(true)
     this.inventarService.updateShowNewItem(false)
   }
 
@@ -34,8 +35,10 @@ export class AddNewItemComponent implements OnInit {
       this.itemComponent.name=this.itemForm.value.name
       this.inventarService.setNewItem(this.itemComponent)
       this.inventarService.updateShowNewItem(false)
+      this.inventarService.updateShowHome(true)
       //Debug
       console.log(this.itemComponent)
     }
   }
+  
 }

@@ -1,4 +1,4 @@
-<div *ngIf="!getShowNewItem()">
+<div *ngIf="getShowHome()">
   {{ this.checkForUnsavedItems() }}
   <table style="width:100%;border: 3px solid black;border-collapse: collapse;border-radius: 10px;">
     <th>Name</th>
@@ -13,7 +13,7 @@
       <td style="width:30%"><button (click)="item.increase()">+</button><button (click)="item.decrease()">-</button>
       </td>
       <td style="width:10%">
-        <button style="width:100%" (click)="getHistory(item.id)"><img src="./assets/img/history.png"/></button>
+        <button style="width:100%" (click)="getHistory(item)"><img src="./assets/img/history.png"/></button>
       </td>
     </tr>
   </table>
@@ -27,3 +27,4 @@
 </div>
 
 <div  class="app-add-new-item" *ngIf="getShowNewItem()" (reload)="reload()"></div>
+<div  class="app-get-item-history" *ngIf="getShowItemHistory()" (reload)="reload()"></div>
