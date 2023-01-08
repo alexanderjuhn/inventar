@@ -15,11 +15,11 @@ func StartServer() {
     router := gin.Default()
 
     // same as
-    //config := cors.DefaultConfig()
-    //config.AllowAllOrigins = true
-    //config.AllowHeaders = []string{"Origin","Item-Id","*"}
-    //router.Use(cors.New(config))
-    router.Use(cors.Default())
+    config := cors.DefaultConfig()
+    config.AllowAllOrigins = true
+    config.AllowHeaders = []string{"Origin","Item-Id","*"}
+    router.Use(cors.New(config))
+    //router.Use(cors.Default())
 
 
     router.GET("/inventar_backend/readInventar", getInventar)
