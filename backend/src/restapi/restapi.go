@@ -3,7 +3,6 @@ package restapi
 import (
 	dc "backend/databaseConnector"
 	"fmt"
-	"log"
 	"net/http"
 	"strings"
 
