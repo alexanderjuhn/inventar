@@ -17,7 +17,7 @@ func StartServer() {
     // same as
     config := cors.DefaultConfig()
     config.AllowAllOrigins = true
-    config.AllowHeaders = []string{"Origin"}
+    config.AllowHeaders = []string{"Origin","Item-Id","*"}
     router.Use(cors.New(config))
     //router.Use(cors.Default())
 
