@@ -7,6 +7,7 @@ import (
 	"context"
 	_ "github.com/lib/pq"
 	"log"
+	"strconv"
 )
 
 var(
@@ -107,6 +108,7 @@ func UpdateInventar(itemList []Item){
 			// Update it and also log the amount change
 			stmt := `insert into inventar.item_history (id, item_id, amount_change, date_change)
 					 select nextval('inventar.item_history_seq'),$2,$1-amount,$3 from inventar.item where id=$2`
+			log.Println(strconv.Itoa(item.Amount) + " : "+ strconv.Itoa(item.Id))
 			_, e := tx.Exec(stmt, item.Amount, item.Id, time.Now())
 			CheckInsertError(e,tx)
 			stmt2 := `update inventar.item set amount=$1, last_update=$3 where id=$2`
