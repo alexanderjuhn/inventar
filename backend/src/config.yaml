@@ -1,5 +1,5 @@
 database:
-  hostname: local-mini
+  hostname: localhost
   port: 5432
   dbname: inventar_db
   user: postgres
