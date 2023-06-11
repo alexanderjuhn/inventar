@@ -15,7 +15,7 @@ import (
 
 func StartServer() {
     // tracer stuff
-    tracer.Start()
+    tracer.Start(tracer.WithAnalytics(true))
 	defer tracer.Stop()
 
     dc.ReadConfig()
