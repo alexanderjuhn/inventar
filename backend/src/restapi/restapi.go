@@ -6,13 +6,22 @@ import (
 	"net/http"
 	"strings"
 
+	gintrace "gopkg.in/DataDog/dd-trace-go.v1/contrib/gin-gonic/gin"
+	"gopkg.in/DataDog/dd-trace-go.v1/ddtrace/tracer"
+
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
 
 func StartServer() {
+	// tracer stuff
+	tracer.Start(tracer.WithAnalytics(true))
+	defer tracer.Stop()
+
 	dc.ReadConfig()
 	router := gin.Default()
+
+	router.Use(gintrace.Middleware("inventar-backend"))
 
 	// CORS
 	config := cors.DefaultConfig()
