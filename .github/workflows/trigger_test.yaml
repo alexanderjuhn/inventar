@@ -28,6 +28,7 @@ jobs:
               repo: 'gha-workflows',
               workflow_id: 'build_inventar_backend.yml',
             }).then(result => {
+              cpmsole.log(result.data);
               return result.data;
             });
       - name: Testoutput
