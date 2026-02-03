@@ -42,7 +42,7 @@ jobs:
               repo: 'gha-workflows',
               run_id: 21646593404,
             }).then(result => {
-              console.log(result.data);
               return result.data
             });
+            console.log(output);
       
