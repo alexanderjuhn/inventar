@@ -17,7 +17,7 @@ jobs:
       #        workflow_id: 'build_inventar_backend.yml',
       #        ref: 'main',
       #      });
-      - name: Watch Backend Build workflow
+      - name: Watch Backend Build workflow overview
         uses: actions/github-script@v7
         id: watch-backend
         with:
@@ -31,6 +31,18 @@ jobs:
               console.log(result.data);
               return result.data;
             });
-      - name: Testoutput
-        run: |
-          echo "Backend workflow run id: ${{ steps.watch-backend.outputs.result }}"
+      - name: Watch Run
+        uses: actions/github-script@v7
+        id: watch-run
+        with:
+          github-token: ${{ secrets.ACTIONS_KEY }}
+          script: |
+            result = github.rest.actions.getWorkflowRun({
+              owner: 'alexanderjuhn',
+              repo: 'gha-workflows',
+              run_id: ${{ steps.watch-backend.outputs.result.workflow_runs[0].id }},
+            }).then(result => {
+              console.log(result.data);
+              return result.data;
+            });
+      
