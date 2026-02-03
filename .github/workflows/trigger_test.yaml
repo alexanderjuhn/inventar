@@ -40,7 +40,7 @@ jobs:
             result = github.rest.actions.getWorkflowRun({
               owner: 'alexanderjuhn',
               repo: 'gha-workflows',
-              run_id: ${{ steps.watch-backend.outputs.result.workflow_runs[0].id }},
+              run_id: 21646593404,
             }).then(result => {
               console.log(result.data);
               return result.data;
