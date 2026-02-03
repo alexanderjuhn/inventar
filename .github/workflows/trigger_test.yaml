@@ -1,5 +1,5 @@
 name: Trigger test
-on: [workflow_dispatch,push]
+on: [workflow_dispatch,push, workflow_run]
 
 jobs:
   trigger_pipeline:
