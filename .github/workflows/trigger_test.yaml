@@ -29,7 +29,6 @@ jobs:
               workflow_id: 'build_inventar_backend.yml',
             }).then(result => {
               console.log(result.data);
-              return result.data;
             });
       - name: Testoutput
         run: |
