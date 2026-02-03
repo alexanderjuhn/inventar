@@ -27,8 +27,7 @@ jobs:
               owner: 'alexanderjuhn',
               repo: 'gha-workflows',
               workflow_id: 'build_inventar_backend.yml',
-            });
-            console.log(result);
+            }) => console.log(result);
       - name: Testoutput
         run: |
           echo "Backend workflow run id: ${{ steps.watch-backend.outputs.result }}"
