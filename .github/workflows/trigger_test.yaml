@@ -17,3 +17,15 @@ jobs:
               workflow_id: 'build_inventar_backend.yml',
               ref: 'main',
             });
+      - name: Watch Backend Build workflow
+        uses: actions/github-script@v7
+        id: watch-backend
+        with:
+          github-token: ${{ secrets.ACTIONS_KEY }}
+          script: |
+            result = github.rest.actions.getWorkflow({
+              owner: 'alexanderjuhn',
+              repo: 'gha-workflows',
+              workflow_id: 'build_inventar_backend.yml',
+            });
+            console.log(result);
