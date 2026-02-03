@@ -23,7 +23,7 @@ jobs:
         with:
           github-token: ${{ secrets.ACTIONS_KEY }}
           script: |
-            result = github.rest.actions.getWorkflow({
+            result = github.rest.actions.listWorkflowRuns({
               owner: 'alexanderjuhn',
               repo: 'gha-workflows',
               workflow_id: 'build_inventar_backend.yml',
