@@ -37,12 +37,12 @@ jobs:
         with:
           github-token: ${{ secrets.ACTIONS_KEY }}
           script: |
-            result = github.rest.actions.getWorkflowRun({
+            const output = result = github.rest.actions.getWorkflowRun({
               owner: 'alexanderjuhn',
               repo: 'gha-workflows',
               run_id: 21646593404,
             }).then(result => {
               console.log(result.data);
-              return result.data | jq '.status';
+              return result.data
             });
       
