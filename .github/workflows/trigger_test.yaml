@@ -1,5 +1,5 @@
 name: Trigger test
-on: [workflow_dispatch,push, workflow_run]
+on: [workflow_dispatch,push]
 
 jobs:
   trigger_pipeline:
@@ -29,3 +29,6 @@ jobs:
               workflow_id: 'build_inventar_backend.yml',
             });
             console.log(result);
+      - name: Testoutput
+        run: |
+          echo "Backend workflow run id: ${{ steps.watch-backend.outputs.result }}"
