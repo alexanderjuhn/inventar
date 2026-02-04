@@ -1,5 +1,5 @@
 name: Trigger test
-on: [workflow_dispatch,push]
+on: [workflow_dispatch, push]
 
 jobs:
   trigger_pipeline:
@@ -23,7 +23,7 @@ jobs:
         with:
           github-token: ${{ secrets.ACTIONS_KEY }}
           script: |
-            result = github.rest.actions.listWorkflowRuns({
+            const result = await github.rest.actions.listWorkflowRuns({
               owner: 'alexanderjuhn',
               repo: 'gha-workflows',
               workflow_id: 'build_inventar_backend.yml',
@@ -37,7 +37,7 @@ jobs:
         with:
           github-token: ${{ secrets.ACTIONS_KEY }}
           script: |
-            const output = result = github.rest.actions.getWorkflowRun({
+            const output = await github.rest.actions.getWorkflowRun({
               owner: 'alexanderjuhn',
               repo: 'gha-workflows',
               run_id: 21646593404,
@@ -45,4 +45,3 @@ jobs:
               return result.data
             });
             console.log(output);
-      
