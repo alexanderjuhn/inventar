@@ -45,3 +45,18 @@ jobs:
               return result.data
             });
             console.log(output);
+      - name: Watch Logs
+        uses: actions/github-script@v7
+        id: watch-logs
+        with:
+          github-token: ${{ secrets.ACTIONS_KEY }}
+          script: |
+            const output = await github.rest.actions.getWorkflowLog({
+              owner: 'alexanderjuhn',
+              repo: 'gha-workflows',
+              run_id: 21646593404,
+            }).then(result => {
+              return result.data
+            });
+            console.log(output);
+
